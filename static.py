@@ -17,7 +17,6 @@ class StaticPredictor(AbstractPredictor):
         
         branch_address = self.GetRegVal(Reg.PC)
 
-        print(branch_address)
         if target_address > branch_address:
             return BranchResult.TAKEN
         
