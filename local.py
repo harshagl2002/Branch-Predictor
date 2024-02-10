@@ -18,15 +18,6 @@ class LocalPredictor(AbstractPredictor):
         for i in range(0, 63):
             self.bht.SetTableVal(i, 0b0000000)
 
-        #Initialize Saturation Counter
-        self.counter = {}
-        for i in range(0, 16):
-            bin_i = bin(i)[2:].zfill(4)
-            if i >= 8:
-                self.counter[bin_i] = BranchResult.TAKEN
-            else:
-                self.counter[bin_i] = BranchResult.NOT_TAKEN
-
     def Update(self, target_address : int, predicted_result : BranchResult, actual_result : BranchResult):
 
         base_address = self._rf.GetRegVal(Reg.PC)
